@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="/posts/index">축구</a></li>
+    <li><a href="/posts/baseball">야구</a></li>
+    <li><a href="/posts/basketball">농구</a></li>
+  </ul>
+  <nav>
+    <div class="nav-wrapper #757575 grey darken-1">
+      <a href="/posts" class="brand-logo">매칭매칭</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if user_signed_in? %>
+          <li><a href="/posts/new">글작성하기</a></li>
+          <li><a href="/users/edit">정보수정</a></li>
+          <li><a href="/users/sign_out">로그아웃</a></li>
+        <% else %>  
+          <li><a href="/users/sign_in">로그인</a></li>
+          <li><a href="/users/sign_up">회원가입</a></li>
+        <% end %>
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">종목선택</i></a></li>
+      </ul>
+    </div>
+  </nav>
+<div class="container">  
+<%= yield %>
+</div>
+
+</body>
+</html>

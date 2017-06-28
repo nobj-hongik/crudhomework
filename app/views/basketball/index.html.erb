@@ -1,0 +1,17 @@
+<h1>농구 게시판</h1>
+        <div class="col s12 m8">
+            <% @posts.each do |post| %>
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title"><%= post.user.name %></span>
+                        소속팀:<%= post.user.teamname %></br></br>
+                        <span><%= post.content %></span></br>
+                        <span><%= post.created_at %></span>
+                    <% if current_user.id == post.user_id %>
+                        <%= link_to "삭제", post_path(post), method: "delete", class: "right" %>
+                        <%= link_to "수정", edit_post_path(post), class: "right" %>
+                    <% end %>                         
+                    </div>
+                </div>
+            <% end %>
+        </div>
